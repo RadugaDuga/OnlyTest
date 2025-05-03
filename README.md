@@ -1,13 +1,13 @@
-## Overview и Mobile версия
+## Превью разных версий
 
 <p align="center">
-  <img src="src/assets/overview.png" alt="Overview" height="250px" style="display:inline-block; margin-right: 10px;"/>
-  <img src="src/assets/overview-mobile.png" alt="Overview Mobile" height="250px" style="display:inline-block;"/>
+  <img src="src/assets/preview.png" alt="Preview" height="250px" style="display:inline-block; margin-right: 10px;"/>
+  <img src="src/assets/preview-mobile.png" alt="Preview Mobile" height="250px" style="display:inline-block;"/>
 </p>
 
 ## Запуск проекта
 
-1. Установите зависимости ( лучше через ci чтоб не было конфликтов разных либ ):
+1. Установи зависимости ( лучше через ci чтоб не было конфликтов разных либ ):
      ```bash
      npm ci
      ```
@@ -17,33 +17,32 @@
      npm start
      ```
 
-     Проект будет доступен тебе по адресу http://localhost:3000
+     Проект будет доступен по адресу http://localhost:3000
 
 3. Для сборки production-версии:
      ```bash
      npm run build
      ```
 
-**Структура проекта:**
+## Запуск проекта
 
--    `src/` — исходный код приложения
-     -    `App.tsx` — основной компонент приложения
-     -    `index.tsx` — точка входа
+-    `src/`
+     -    `App.tsx` — основной компонент
+     -    `index.tsx` — энтри поинт
      -    `index.html` — шаблон HTML
      -    `mock.ts`, `types.ts` — мок-данные и типы
      -    `assets/` — статические ресурсы
           -    `icons/` — SVG-иконки (ChevronLeft, ChevronRight, TimelineCircle)
      -    `components/` — основные компоненты временной шкалы:
           -    `TimelineControls/` — элементы управления (кнопки навигации и т.д.)
-          -    `TimelineDates/` — отображение дат на шкале
-          -    `TimelineGrid/` — сетка временной шкалы
-          -    `TimelineMinipoints/` — мини-точки событий
+          -    `TimelineDates/` — анимированные даты от и до
+          -    `TimelineGrid/` — визуальная сетка
+          -    `TimelineMinipoints/` — мини-точки событий ( пагинация для точек таймлайна )
           -    `TimelinePoint/` — основная точка события
-          -    `TimelineSwiper/` — свайпер для прокрутки шкалы
-     -    `constants/` — константы приложения
+          -    `TimelineSwiper/` — свайпер со слайдами текущей темы
+     -    `constants/` — константы ( активный элемент по умолчанию )
      -    `hooks/` — пользовательские хуки (useAnimatedDates, useTimelineWheel)
-     -    `styles/` — SCSS-стили (общие, сброс, переменные)
--    `webpack.config.js` — конфигурация сборки
--    `tsconfig.json` — настройки TypeScript
--    `package.json` — зависимости и скрипты
-
+     -    `styles/` — SCSS-стили (главные + переменные)
+-    `webpack.config.js` — конфиг вебпака
+-    `tsconfig.json` — конфиг TypeScript
+-    `package.json` — зависимости

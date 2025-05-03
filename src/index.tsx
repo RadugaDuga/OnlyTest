@@ -1,6 +1,5 @@
 import React from "react";
 import App from "./App";
-import "./styles/reset.scss";
 import "./styles/index.scss";
 import "swiper/css";
 import "swiper/css/navigation";
