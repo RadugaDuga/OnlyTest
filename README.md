@@ -1,16 +1,23 @@
+## Overview и Mobile версия
+
+<p align="center">
+  <img src="src/assets/overview.png" alt="Overview" width="45%" style="display:inline-block; margin-right: 10px;"/>
+  <img src="src/assets/overview-mobile.png" alt="Overview Mobile" width="45%" style="display:inline-block;"/>
+</p>
+
 ## Запуск проекта
 
-1. Установите зависимости (рекомендуется для чистой установки):
+1. Установите зависимости ( лучше через ci чтоб не было конфликтов разных либ ):
      ```bash
      npm ci
      ```
-2. Запустите проект в режиме разработки:
+2. Запусти проект в режиме разработки:
 
      ```bash
      npm start
      ```
 
-     Проект будет доступен по адресу http://localhost:3000
+     Проект будет доступен тебе по адресу http://localhost:3000
 
 3. Для сборки production-версии:
      ```bash
@@ -40,6 +47,3 @@
 -    `tsconfig.json` — настройки TypeScript
 -    `package.json` — зависимости и скрипты
 
----
-
-Проект предназначен для тестирования и демонстрации компонентов временной шкалы (Timeline).
