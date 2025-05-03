@@ -1,8 +1,8 @@
 ## Overview и Mobile версия
 
 <p align="center">
-  <img src="src/assets/overview.png" alt="Overview" width="45%" style="display:inline-block; margin-right: 10px;"/>
-  <img src="src/assets/overview-mobile.png" alt="Overview Mobile" width="45%" style="display:inline-block;"/>
+  <img src="src/assets/overview.png" alt="Overview" height="250px" style="display:inline-block; margin-right: 10px;"/>
+  <img src="src/assets/overview-mobile.png" alt="Overview Mobile" height="250px" style="display:inline-block;"/>
 </p>
 
 ## Запуск проекта
