@@ -1,9 +1,9 @@
 ## Превью разных версий
 
-<div align="center" style="display: flex; align-items: flex-start; gap: 5px; height: 350px;">
-  <img src="src/assets/preview.png" alt="Preview" style="height: 100%; flex-grow: 1; object-fit: contain;"/>
-  <img src="src/assets/preview-mobile.png" alt="Preview Mobile" style="height: 100%;"/>
-</div>
+<p align="center">
+  <img src="src/assets/preview.png" alt="Preview" style="height: 326px;"/>
+  <img src="src/assets/preview-mobile.png" alt="Preview Mobile" style="height: 326px;"/>
+</p>
 
 ## Запуск проекта
 
