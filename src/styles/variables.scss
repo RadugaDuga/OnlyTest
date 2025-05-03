@@ -1,0 +1,36 @@
+// Основной внутренний отступ для сетки
+$main-grid-padding: clamp(18px, 7vw, 100px);
+
+// Цвет основного текста
+$common-text-color: #415478;
+
+// Акцентный синий цвет
+$accent-blue-color: #5d6def;
+
+// Акцентный розовый цвет
+$accent-pink-color: #ff5b9c;
+
+// Цвет линий сетки
+$background-border-color: #e3e6ed;
+
+// Цвет основного фона
+$background-color: #f5f6fa;
+
+// Размеры шрифтов
+$font-size-timeline-date: clamp(65px, 16vw, 200px);
+$font-size-timeline-title: clamp(27px, 6vw, 60px);
+$font-size-swiper-title: clamp(18px, 3vw, 24px);
+$font-size-swiper-content: clamp(16px, 2.5vw, 20px);
+$font-size-point: clamp(12px, 2vw, 15px);
+$font-size-point-content: clamp(14px, 2.5vw, 20px);
+$font-size-point-title: clamp(14px, 2.5vw, 20px);
+
+
+@media (max-width: 600px) {
+	$font-size-timeline-title: 27px;
+	$font-size-swiper-title: 18px;
+	$font-size-swiper-content: 16px;
+	$font-size-point: 12px;
+	$font-size-point-content: 14px;
+	$font-size-point-title: 14px;
+}

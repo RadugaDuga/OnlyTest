@@ -1,0 +1,63 @@
+@use "../../styles/variables.scss" as *;
+
+.timeline__point {
+	width: 55px;
+	height: 55px;
+	display: flex;
+	color: rgb(145, 145, 145);
+	justify-content: center;
+	align-items: center;
+	font-size: $font-size-point;
+	cursor: pointer;
+	transform-style: preserve-3d;
+
+	.timeline__point-content {
+		position: relative;
+		display: flex;
+		height: 7px;
+		width: 7px;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		border-radius: 99999px;
+		transition: 0.2s;
+		background-color: $common-text-color;
+		color: transparent;
+		transform-style: preserve-3d;
+		backface-visibility: hidden;
+		font-size: $font-size-point-content;
+		font-weight: 600;
+		line-height: 60px;
+	}
+
+	.timeline__point-title {
+		position: absolute;
+		left: 100%;
+		margin-left: 20px;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		width: max-content;
+		font-weight: 900;
+		color: $common-text-color;
+		font-size: $font-size-point-title;
+		pointer-events: none;
+	}
+
+	&:hover,
+	&.timeline__point--active {
+		.timeline__point-content {
+			width: 55px;
+			height: 55px;
+			background-color: $background-color;
+			color: #3d4d67;
+			border: 1px solid #abafb7;
+		}
+	}
+
+	&.timeline__point--active {
+		.timeline__point-title {
+			transition: opacity 1s ease;
+			opacity: 1;
+		}
+	}
+}

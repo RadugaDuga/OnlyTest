@@ -1,0 +1,1 @@
+export const DEFAULT_TIMELINE_ACTIVE_POINT = 1;
