@@ -1,9 +1,9 @@
 ## Превью разных версий
 
-<p align="center">
-  <img src="src/assets/preview.png" alt="Preview" height="250px" style="display:inline-block; margin-right: 10px;"/>
-  <img src="src/assets/preview-mobile.png" alt="Preview Mobile" height="250px" style="display:inline-block;"/>
-</p>
+<div align="center" style="display: flex; height: 350px; gap: 5px;">
+  <img src="src/assets/preview.png" alt="Preview" style="height: 100%; display: inline-block;"/>
+  <img src="src/assets/preview-mobile.png" alt="Preview Mobile" style="height: 100%; display: inline-block;"/>
+</div>
 
 ## Запуск проекта
 
@@ -24,24 +24,26 @@
      npm run build
      ```
 
-## Запуск проекта
+## Структура файлов
 
 -    `src/`
      -    `App.tsx` — основной компонент
      -    `index.tsx` — энтри поинт
      -    `index.html` — шаблон HTML
-     -    `mock.ts`, `types.ts` — мок-данные и типы
-     -    `assets/` — статические ресурсы
-          -    `icons/` — SVG-иконки (ChevronLeft, ChevronRight, TimelineCircle)
+     -    `mock.ts`, `types.ts` — мок-данные и типы для них
+     -    `assets/`
+          -    `icons/` — SVG-иконки
      -    `components/` — основные компоненты временной шкалы:
-          -    `TimelineControls/` — элементы управления (кнопки навигации и т.д.)
+          -    `TimelineControls/` — кнопки переключения активного события таймлайна
           -    `TimelineDates/` — анимированные даты от и до
           -    `TimelineGrid/` — визуальная сетка
           -    `TimelineMinipoints/` — мини-точки событий ( пагинация для точек таймлайна )
-          -    `TimelinePoint/` — основная точка события
+          -    `TimelinePoint/` — точка события на таймлайне
           -    `TimelineSwiper/` — свайпер со слайдами текущей темы
      -    `constants/` — константы ( активный элемент по умолчанию )
-     -    `hooks/` — пользовательские хуки (useAnimatedDates, useTimelineWheel)
+     -    `hooks/` — пользовательские хуки
+          -    `useAnimatedDates/` — хук для анимации дат от и до
+          -    `useTimelineWheel/` — хук для анимации главного колеса
      -    `styles/` — SCSS-стили (главные + переменные)
 -    `webpack.config.js` — конфиг вебпака
 -    `tsconfig.json` — конфиг TypeScript
