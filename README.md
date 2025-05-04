@@ -2,6 +2,7 @@
 
 <p align="center">
   <img src="src/assets/preview.png" alt="Preview" width="100%"/>
+  <img src="src/assets/techstack.png" alt="TechStack" />
 </p>
 
 ## 🚀 Запуск проекта
