@@ -1,10 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(process.cwd(), 'dist'),
         filename: 'bundle.js',
     },
     module: {
@@ -21,17 +21,6 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.(woff|woff2)$/i,
-                type: 'asset/inline',
-            },
-            {
-                test: /\.(eot|ttf|otf)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'fonts/[name][ext]'
-                }
             }
         ],
     },
@@ -41,11 +30,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            favicon: './src/favicon.ico',
         }),
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, 'dist'),
+            directory: path.join(process.cwd(), 'dist'),
         },
         hot: true,
         port: 3000,
