@@ -1,4 +1,4 @@
-## 🖼️ Превью разных версий
+## 🖼️ Превью 
 
 <p align="center">
   <img src="src/assets/preview.png" alt="Preview" width="100%"/>
