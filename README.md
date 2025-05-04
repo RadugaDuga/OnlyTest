@@ -1,8 +1,10 @@
 # 🎥 Превью 
 <br>
 <p align="center">
-  <img src="src/assets/preview.png" alt="Preview" width="100%"/>
+  <a href="https://drive.google.com/file/d/1-7ZU9aGZnCmj4bY-RcmQ2RaHXv4hkySa/view?usp=drive_link" target="_blank">Смотреть видео-превью</a>
+  <br/>
   <img src="src/assets/techstack.png" alt="TechStack" />
+  
 </p>
 
 <br>
@@ -31,7 +33,6 @@
 <br>
 
 # 📁 Структура файлов
-<br>
 
 -    `src/`
 
