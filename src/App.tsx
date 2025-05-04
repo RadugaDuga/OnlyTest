@@ -6,7 +6,6 @@ import { useTimelineWheel } from "./hooks/useTimelineWheel";
 import { useAnimatedDates } from "./hooks/useAnimatedDates";
 import { TimelineCircle } from "./assets/icons";
 import { menuItems, slidesData } from "./mock";
-import { DEFAULT_TIMELINE_ACTIVE_POINT } from "./constants/constants";
 
 import TimelineSwiper from "./components/TimelineSwiper";
 import TimelineControls from "./components/TimelineControls";
@@ -16,9 +15,7 @@ import TimelineDates from "./components/TimelineDates";
 import "./styles/App.scss";
 
 const App: React.FC = () => {
-	const [activeItem, setActiveItem] = useState<number>(
-		DEFAULT_TIMELINE_ACTIVE_POINT
-	);
+	const [activeItem, setActiveItem] = useState<number>(1);
 
 	const theme = slidesData[activeItem - 1].theme;
 	const { dateFrom, dateTo, dateFromRef, dateToRef } =
@@ -32,7 +29,6 @@ const App: React.FC = () => {
 		itemsRef,
 		wrapperRef,
 		svgRef,
-		activeItem,
 	});
 
 	return (

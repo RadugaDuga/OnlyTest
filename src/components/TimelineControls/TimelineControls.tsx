@@ -28,12 +28,14 @@ const TimelineControls: React.FC<TimelineControlsProps> = ({
 				<button
 					onClick={handlePrev}
 					className="timeline__controls-btn timeline__controls-btn--prev"
+					id="prev"
 				>
 					<ChevronLeft />
 				</button>
 				<button
 					className="timeline__controls-btn timeline__controls-btn--next"
 					onClick={handleNext}
+					id="next"
 				>
 					<ChevronRight />
 				</button>

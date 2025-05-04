@@ -56,7 +56,7 @@
 
 	&.timeline__point--active {
 		.timeline__point-title {
-			transition: opacity 1s ease;
+			transition: opacity 1s ease .5s;
 			opacity: 1;
 		}
 	}

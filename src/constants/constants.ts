@@ -1,1 +1,1 @@
-export const DEFAULT_TIMELINE_ACTIVE_POINT = 1;
+export const ANIMATE_TO_INDEX_DURATION = 0.35;
