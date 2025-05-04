@@ -81,16 +81,16 @@ export function useTimelineWheel({
 			0
 		);
 
-		let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
-		let targetIndex = 0;
+		let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+		let selectedIndex = 0;
 
-		function animateToIndex(newIndex: number) {
-			const current = tracker.item;
-			if (newIndex === current) return;
-			const active = document.querySelector(".item.active");
-			if (active) active.classList.remove(".item.active");
-			items[newIndex].classList.add("active");
-			let diff = current - newIndex;
+		function animateToIndex(targetIdx: number) {
+			const currentIdx = tracker.item;
+			if (targetIdx === currentIdx) return;
+			const activeItem = document.querySelector(".item.active");
+			if (activeItem) activeItem.classList.remove("active");
+			items[targetIdx].classList.add("active");
+			let diff = currentIdx - targetIdx;
 			if (Math.abs(diff) < numItems / 2) {
 				gsap.to(tl, {
 					progress: snap(tl.progress() + diff * itemStep),
@@ -98,16 +98,16 @@ export function useTimelineWheel({
 					modifiers: { progress: wrapProgress },
 				});
 			} else {
-				let amt = numItems - Math.abs(diff);
-				if (current > newIndex) {
+				let shortestPath = numItems - Math.abs(diff);
+				if (currentIdx > targetIdx) {
 					gsap.to(tl, {
-						progress: snap(tl.progress() + amt * -itemStep),
+						progress: snap(tl.progress() + shortestPath * -itemStep),
 						duration: ANIMATE_TO_INDEX_DURATION,
 						modifiers: { progress: wrapProgress },
 					});
 				} else {
 					gsap.to(tl, {
-						progress: snap(tl.progress() + amt * itemStep),
+						progress: snap(tl.progress() + shortestPath * itemStep),
 						duration: ANIMATE_TO_INDEX_DURATION,
 						modifiers: { progress: wrapProgress },
 					});
@@ -115,44 +115,44 @@ export function useTimelineWheel({
 			}
 		}
 
-		function setActiveIndex(newIndex: number) {
-			targetIndex = newIndex;
-			if (debounceTimeout) clearTimeout(debounceTimeout);
-			debounceTimeout = setTimeout(() => {
-				animateToIndex(targetIndex);
+		function setActiveIndex(newIdx: number) {
+			selectedIndex = newIdx;
+			if (debounceTimer) clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => {
+				animateToIndex(selectedIndex);
 			}, 250);
 		}
 
 		function onWrapperClick(e: MouseEvent) {
-			const target = e.target as HTMLElement;
-			const itemIndex = items.findIndex(
-				(item) => item === target || item.contains(target)
+			const targetElement = e.target as HTMLElement;
+			const clickedIndex = items.findIndex(
+				(item) => item === targetElement || item.contains(targetElement)
 			);
-			if (itemIndex !== -1) {
-				setActiveIndex(itemIndex);
+			if (clickedIndex !== -1) {
+				setActiveIndex(clickedIndex);
 			}
 		}
 		wrapper.addEventListener("click", onWrapperClick, { signal });
 
-		const nextBtn = document.getElementById("next");
-		const prevBtn = document.getElementById("prev");
-		if (nextBtn)
-			nextBtn.addEventListener(
+		const nextButton = document.getElementById("next");
+		const prevButton = document.getElementById("prev");
+		if (nextButton)
+			nextButton.addEventListener(
 				"click",
 				() => {
-					let next = (targetIndex + 1) % numItems;
-					setActiveIndex(next);
+					let nextIdx = (selectedIndex + 1) % numItems;
+					setActiveIndex(nextIdx);
 				},
 				{
 					signal,
 				}
 			);
-		if (prevBtn)
-			prevBtn.addEventListener(
+		if (prevButton)
+			prevButton.addEventListener(
 				"click",
 				() => {
-					let prev = (targetIndex - 1 + numItems) % numItems;
-					setActiveIndex(prev);
+					let prevIdx = (selectedIndex - 1 + numItems) % numItems;
+					setActiveIndex(prevIdx);
 				},
 				{
 					signal,
@@ -160,7 +160,7 @@ export function useTimelineWheel({
 			);
 
 		return () => {
-			if (debounceTimeout) clearTimeout(debounceTimeout);
+			if (debounceTimer) clearTimeout(debounceTimer);
 			abortController.abort();
 			circlePath.remove();
 		};
