@@ -1,14 +1,16 @@
 # 🎥 Превью
+
+[![Смотреть видео-превью](src/assets/preview.png)](https://drive.google.com/file/d/1-7ZU9aGZnCmj4bY-RcmQ2RaHXv4hkySa/view?usp=drive_link)
+
 <br>
 <p align="center">
-  <video src="src/assets/preview.mp4" controls width="100%"></video>
-  <br/>
   <img src="src/assets/techstack.png" alt="TechStack" />
 </p>
 
 <br>
 
 # 🏁 Запуск проекта
+
 <br>
 
 1. 📥 Склонируй репозиторий или скачай архив с GitHub Releases и распакуй.
@@ -26,7 +28,7 @@
      ```bash
      npm start
      ```
-     
+
 4. 🛠️ Для сборки production-версии используй:
      ```bash
      npm run build
