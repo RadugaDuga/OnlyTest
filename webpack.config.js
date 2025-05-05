@@ -1,12 +1,17 @@
+import dotenv from 'dotenv';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+dotenv.config();
 
 export default {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(process.cwd(), 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].[contenthash].js',
+        clean: true,
     },
     module: {
         rules: [
@@ -17,11 +22,11 @@ export default {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: [process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
             }
         ],
     },
@@ -34,12 +39,28 @@ export default {
             favicon: './src/favicon.ico',
         }),
         new Dotenv(),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+        }),
     ],
     devServer: {
         static: {
             directory: path.join(process.cwd(), 'dist'),
         },
         hot: true,
-        port: process.env.PORT ? Number(process.env.PORT) : 3000,
+        // Безопасно преобразуем PORT из .env в число, иначе используем 3000
+        port: Number(process.env.PORT) || 3000,
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\/](react|react-dom|swiper|gsap)[\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                },
+            },
+        },
     },
 };
