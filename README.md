@@ -3,9 +3,13 @@
 [![Смотреть видео-превью](src/assets/preview.png)](https://drive.google.com/file/d/1-7ZU9aGZnCmj4bY-RcmQ2RaHXv4hkySa/view?usp=drive_link)
 
 <br>
-<p align="center">
-  <img src="src/assets/techstack.png" alt="TechStack" />
-</p>
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white)
+![Swiper](https://img.shields.io/badge/Swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
 
 <br>
 
