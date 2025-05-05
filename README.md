@@ -62,6 +62,6 @@
           -    `useTimelineWheel/` — хук для анимации главного колеса
      -    `styles/` — SCSS-стили (главные + переменные)
 
--    `webpack.config.js` — конфиг вебпака
+-    `webpack.config.ts` — конфиг вебпака
 -    `tsconfig.json` — конфиг TypeScript
 -    `package.json` — зависимости
