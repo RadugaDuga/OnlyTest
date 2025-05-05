@@ -1,1 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@use "./variables" as *;
+
+body {
+	background-color: $background-color;
+	font-family: "Roboto Condensed";
+}

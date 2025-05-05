@@ -1,1 +1,1 @@
-export const ANIMATE_TO_INDEX_DURATION = 0.35;
+export const ANIMATE_TO_POINT_DURATION = 0.35;

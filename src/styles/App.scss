@@ -1,10 +1,5 @@
 @use "./variables" as *;
 
-body {
-	background-color: $background-color;
-	font-family: "Roboto Condensed";
-}
-
 .timeline__grid {
 	max-width: 1620px;
 	margin: 0 auto;
@@ -105,7 +100,7 @@ body {
 	// Путь SVG окружности
 	&__circle-path {
 		fill: none;
-		stroke: #00000016;
+		stroke: #0000000f;
 		stroke-width: 1;
 	}
 }

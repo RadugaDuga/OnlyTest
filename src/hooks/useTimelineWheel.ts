@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { ANIMATE_TO_INDEX_DURATION } from "../constants/constants";
+import { ANIMATE_TO_POINT_DURATION } from "../constants/constants";
 gsap.registerPlugin(MotionPathPlugin);
 
 interface UseTimelineWheelProps {
@@ -21,7 +21,6 @@ export function useTimelineWheel({
 		const items = (itemsRef.current || []).filter(
 			Boolean
 		) as HTMLDivElement[];
-		if (!svg || !wrapper || !items.length) return;
 
 		const abortController = new AbortController();
 		const { signal } = abortController;
@@ -31,7 +30,7 @@ export function useTimelineWheel({
 			false
 		)[0];
 		circlePath.id = "circlePath";
-		svg.prepend(circlePath);
+		svg?.prepend(circlePath);
 
 		const numItems = items.length;
 		const itemStep = 1 / numItems;
@@ -94,21 +93,25 @@ export function useTimelineWheel({
 			if (Math.abs(diff) < numItems / 2) {
 				gsap.to(tl, {
 					progress: snap(tl.progress() + diff * itemStep),
-					duration: ANIMATE_TO_INDEX_DURATION,
+					duration: ANIMATE_TO_POINT_DURATION,
 					modifiers: { progress: wrapProgress },
 				});
 			} else {
 				let shortestPath = numItems - Math.abs(diff);
 				if (currentIdx > targetIdx) {
 					gsap.to(tl, {
-						progress: snap(tl.progress() + shortestPath * -itemStep),
-						duration: ANIMATE_TO_INDEX_DURATION,
+						progress: snap(
+							tl.progress() + shortestPath * -itemStep
+						),
+						duration: ANIMATE_TO_POINT_DURATION,
 						modifiers: { progress: wrapProgress },
 					});
 				} else {
 					gsap.to(tl, {
-						progress: snap(tl.progress() + shortestPath * itemStep),
-						duration: ANIMATE_TO_INDEX_DURATION,
+						progress: snap(
+							tl.progress() + shortestPath * itemStep
+						),
+						duration: ANIMATE_TO_POINT_DURATION,
 						modifiers: { progress: wrapProgress },
 					});
 				}
@@ -126,38 +129,31 @@ export function useTimelineWheel({
 		function onWrapperClick(e: MouseEvent) {
 			const targetElement = e.target as HTMLElement;
 			const clickedIndex = items.findIndex(
-				(item) => item === targetElement || item.contains(targetElement)
+				(item) =>
+					item === targetElement || item.contains(targetElement)
 			);
 			if (clickedIndex !== -1) {
 				setActiveIndex(clickedIndex);
 			}
 		}
-		wrapper.addEventListener("click", onWrapperClick, { signal });
+		wrapper?.addEventListener("click", onWrapperClick, { signal });
+
+		function onNextClick() {
+			let nextIdx = (selectedIndex + 1) % numItems;
+			setActiveIndex(nextIdx);
+		}
+		function onPrevClick() {
+			let prevIdx = (selectedIndex - 1 + numItems) % numItems;
+			setActiveIndex(prevIdx);
+		}
 
 		const nextButton = document.getElementById("next");
 		const prevButton = document.getElementById("prev");
+
 		if (nextButton)
-			nextButton.addEventListener(
-				"click",
-				() => {
-					let nextIdx = (selectedIndex + 1) % numItems;
-					setActiveIndex(nextIdx);
-				},
-				{
-					signal,
-				}
-			);
+			nextButton.addEventListener("click", onNextClick, { signal });
 		if (prevButton)
-			prevButton.addEventListener(
-				"click",
-				() => {
-					let prevIdx = (selectedIndex - 1 + numItems) % numItems;
-					setActiveIndex(prevIdx);
-				},
-				{
-					signal,
-				}
-			);
+			prevButton.addEventListener("click", onPrevClick, { signal });
 
 		return () => {
 			if (debounceTimer) clearTimeout(debounceTimer);

@@ -1,5 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 export default {
     entry: './src/index.tsx',
@@ -11,7 +12,7 @@ export default {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                use: 'babel-loader',
+                use: 'ts-loader',
                 exclude: /node_modules/,
             },
             {
@@ -32,12 +33,13 @@ export default {
             template: './src/index.html',
             favicon: './src/favicon.ico',
         }),
+        new Dotenv(),
     ],
     devServer: {
         static: {
             directory: path.join(process.cwd(), 'dist'),
         },
         hot: true,
-        port: 3000,
+        port: process.env.PORT ? Number(process.env.PORT) : 3000,
     },
 };

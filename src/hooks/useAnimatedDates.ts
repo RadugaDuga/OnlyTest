@@ -4,7 +4,6 @@ import { slidesData } from "../mock";
 
 export function useAnimatedDates(activeItem: number) {
 	const slides = slidesData[activeItem - 1]?.content || [];
-
 	const parseDate = (slide?: { title: string }) => Number(slide?.title) || 0;
 
 	const [dateFrom, setDateFrom] = useState<number>(() =>
@@ -36,7 +35,7 @@ export function useAnimatedDates(activeItem: number) {
 		dates.forEach(({ ref, current, newValue, setter }) => {
 			if (ref && newValue !== current) {
 				gsap.to(ref, {
-					duration: .7,
+					duration: .6,
 					innerText: newValue,
 					snap: { innerText: 1 },
 					ease: "power1.out",
